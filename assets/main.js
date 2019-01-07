@@ -5,7 +5,67 @@
  */
 //console.table(DATA)
 
-const containerRoot = document.getElementById('root');
+const showData = (DATA) => {
+  let result = '';
+  //console.log(DATA)
+  DATA.forEach(element => {
+    //element --> DATA[i]
+    if(element.house === '' && element.patronus === ''){
+      result = containerRoot.innerHTML += `<div class="container-fluid">
+      <div class="card">
+        <div class="box">
+          <div class="img">
+              <img src=${element.image}>
+          </div>
+          <h2>${element.name}<br><span>No tiene</span></h2>
+          <p>Patronus: No aplica</p>
+        </div>
+      </div>
+    </div>`
+    } else  if(element.house !== '' && element.patronus === ''){
+      result = containerRoot.innerHTML += `<div class="container-fluid">
+      <div class="card">
+        <div class="box">
+          <div class="img">
+              <img src=${element.image}>
+          </div>
+          <h2>${element.name}<br><span>${element.house}</span></h2>
+          <p>Patronus: No aplica</p>
+        </div>
+      </div>
+    </div>`
+    } else  if(element.house === '' && element.patronus !== ''){
+      result = containerRoot.innerHTML += `<div class="container-fluid">
+      <div class="card">
+        <div class="box">
+          <div class="img">
+              <img src=${element.image}>
+          </div>
+          <h2>${element.name}<br><span>No aplica</span></h2>
+          <p>Patronus: ${element.patronus}</p>
+        </div>
+      </div>
+    </div>`
+    } else { 
+    result = containerRoot.innerHTML += `<div class="container-fluid">
+    <div class="card">
+      <div class="box">
+        <div class="img">
+            <img src=${element.image}>
+        </div>
+        <h2>${element.name}<br><span>${element.house}</span></h2>
+        <p>Patronus: ${element.patronus}</p>
+      </div>
+    </div>
+  </div>`
+    }
+  })
+  return result;
+}
+
+ window.onload = showData(DATA);
+
+/*const containerRoot = document.getElementById('root');
 const showData = (DATA) => {
   DATA.forEach(element => {
     if(element.house === '' && element.patronus === ''){
@@ -142,63 +202,4 @@ const showData = (DATA) => {
       containerRoot.appendChild(container);
     }
   });
-}
-/*const showData = (DATA) => {
-  let result = '';
-  //console.log(DATA)
-  DATA.forEach(element => {
-    //element --> DATA[i]
-    if(element.house === '' && element.patronus === ''){
-      result = containerRoot.innerHTML += `<div class="container-fluid">
-      <div class="card">
-        <div class="box">
-          <div class="img">
-              <img src=${element.image}>
-          </div>
-          <h2>${element.name}<br><span>No tiene</span></h2>
-          <p>Patronus: No aplica</p>
-        </div>
-      </div>
-    </div>`
-    } else  if(element.house !== '' && element.patronus === ''){
-      result = containerRoot.innerHTML += `<div class="container-fluid">
-      <div class="card">
-        <div class="box">
-          <div class="img">
-              <img src=${element.image}>
-          </div>
-          <h2>${element.name}<br><span>${element.house}</span></h2>
-          <p>Patronus: No aplica</p>
-        </div>
-      </div>
-    </div>`
-    } else  if(element.house === '' && element.patronus !== ''){
-      result = containerRoot.innerHTML += `<div class="container-fluid">
-      <div class="card">
-        <div class="box">
-          <div class="img">
-              <img src=${element.image}>
-          </div>
-          <h2>${element.name}<br><span>No aplica</span></h2>
-          <p>Patronus: ${element.patronus}</p>
-        </div>
-      </div>
-    </div>`
-    } else { 
-    result = containerRoot.innerHTML += `<div class="container-fluid">
-    <div class="card">
-      <div class="box">
-        <div class="img">
-            <img src=${element.image}>
-        </div>
-        <h2>${element.name}<br><span>${element.house}</span></h2>
-        <p>Patronus: ${element.patronus}</p>
-      </div>
-    </div>
-  </div>`
-    }
-  })
-  return result;
 }*/
-
- window.onload = showData(DATA);
